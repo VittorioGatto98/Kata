@@ -79,5 +79,16 @@ namespace Kata.Test
 
             action.Should().Throw<FormatException>();
         }
+
+        [Theory]
+        [InlineData("//;3\n4;5", 12)]
+        [InlineData("//=3=4\n5=-4", 8)]
+        [InlineData("//.-20\n4.-5.10\n2", -9)]
+        public void GetSumFromStringWithDifferentSeparator(string str, int expected)
+        {
+            result = _sut.Add(str);
+
+            result.Should().Be(expected);
+        }
     }
 }
