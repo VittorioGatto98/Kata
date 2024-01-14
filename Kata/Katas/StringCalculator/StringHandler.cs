@@ -10,7 +10,7 @@ namespace Kata.Katas.StringCalculator
     internal static class StringHandler
     {
         #region StringCalculator
-            public static int[] GetNumbersFromString(string str)
+            public static decimal[] GetNumbersFromString(string str)
             {
                 string separator = ",";
                 int indexStartForSubstring = 0;
@@ -23,9 +23,9 @@ namespace Kata.Katas.StringCalculator
                 string[] strSplitted = SplitWithSpecifiedSeparator(separator, strReplaced);
 
                 if (strSplitted.Length == 0)
-                    return new int[0];
+                    return new decimal[0];
 
-                int[] numbersToSum = new int[strSplitted.Length];
+                decimal[] numbersToSum = new decimal[strSplitted.Length];
 
                 for (int i = 0; i < strSplitted.Length; i++)
                     numbersToSum[i] = Convert.ToInt32(strSplitted[i]);
@@ -68,5 +68,9 @@ namespace Kata.Katas.StringCalculator
         }
 
         #endregion SearchFunctionality
+
+        #region PointOfSales
+        
+        #endregion PointOfSales
     }
 }

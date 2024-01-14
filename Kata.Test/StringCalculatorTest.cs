@@ -13,7 +13,7 @@ namespace Kata.Test
         private readonly StringCalculator _sut;
         private readonly string _splitter = ";";
         private readonly string[] _separator =   { "\n" };
-        private int result = 0;
+        private decimal result = 0;
         public StringCalculatorTest() 
         {
             _sut = new StringCalculator();
@@ -23,7 +23,7 @@ namespace Kata.Test
         [Fact]
         public void GetZero()
         {
-            result = _sut.Add(string.Empty);
+            result = _sut.AddNumbersInString(string.Empty);
             
             result.Should().Be(0);
         }
@@ -33,7 +33,7 @@ namespace Kata.Test
         [InlineData("-5", -5)]
         public void GetSingleNumber(string str, int expected)
         {
-            result = _sut.Add(str);
+            result = _sut.AddNumbersInString(str);
             
             result.Should().Be(expected);
         }
@@ -44,7 +44,7 @@ namespace Kata.Test
         [InlineData("0,-0", 0)]
         public void GetSumOfTwoNumber(string str, int expected)
         {
-            result = _sut.Add(str);
+            result = _sut.AddNumbersInString(str);
 
             result.Should().Be(expected);
         }
@@ -55,7 +55,7 @@ namespace Kata.Test
         [InlineData("0,-0,1,4", 5)]
         public void GetSumOfTwoOrMoreNumber(string str, int expected)
         {
-            result = _sut.Add(str);
+            result = _sut.AddNumbersInString(str);
 
             result.Should().Be(expected);
         }
@@ -66,7 +66,7 @@ namespace Kata.Test
         [InlineData("0,-0\n9", 9)]
         public void GetSumOfTwoNumberWithNewLine(string str, int expected)
         {
-            result = _sut.Add(str);
+            result = _sut.AddNumbersInString(str);
 
             result.Should().Be(expected);
         }
@@ -75,7 +75,7 @@ namespace Kata.Test
         [InlineData("3\n4,5,")]
         public void GetFormatExceptionWhenStringEndWithSeparator(string str)
         {
-            Action action = () => _sut.Add(str);
+            Action action = () => _sut.AddNumbersInString(str);
 
             action.Should().Throw<FormatException>();
         }
@@ -86,7 +86,7 @@ namespace Kata.Test
         [InlineData("//.-20\n4.-5.10\n2", -9)]
         public void GetSumFromStringWithDifferentSeparator(string str, int expected)
         {
-            result = _sut.Add(str);
+            result = _sut.AddNumbersInString(str);
 
             result.Should().Be(expected);
         }
