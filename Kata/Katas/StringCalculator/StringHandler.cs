@@ -60,9 +60,11 @@ namespace Kata.Katas.StringCalculator
 
         #region SearchFunctionality
 
-        public static bool CheckIfStringLegthIsMoreOrEqualThan(string str, int minLength)
+        public static bool CheckIfStringLengthIsLessThan(string str, int minLength)
         {
-            return str.Length >= minLength ? true : false;
+            return (string.IsNullOrWhiteSpace(str) || str.Length < minLength) 
+                ? true 
+                : false;
         }
 
         #endregion SearchFunctionality

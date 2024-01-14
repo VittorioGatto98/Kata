@@ -20,7 +20,7 @@ namespace Kata.Katas.SearchFunctionality
             if (search == "*")
                 return cities.ToList();
 
-            if (string.IsNullOrWhiteSpace(search) || !StringHandler.CheckIfStringLegthIsMoreOrEqualThan(search, 2))
+            if (StringHandler.CheckIfStringLengthIsLessThan(search, 2))
                 return result = new List<string>();
 
              result = [.. cities.Where(x => x.Contains(search))];
